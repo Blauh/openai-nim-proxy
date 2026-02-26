@@ -229,6 +229,14 @@ app.post('/v1/chat/completions', async (req, res) => {
 app.get('/v1', (req, res) => {
   res.json({ status: 'ok', message: 'OpenAI NIM Proxy v1' });
 });
+// Handle root and /v1 base endpoints
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'OpenAI NIM Proxy' });
+});
+
+app.get('/v1', (req, res) => {
+  res.json({ status: 'ok', message: 'OpenAI NIM Proxy v1' });
+});
 // Catch-all for unsupported endpoints
 app.all('*', (req, res) => {
   res.status(404).json({
