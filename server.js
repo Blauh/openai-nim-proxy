@@ -225,7 +225,10 @@ app.post('/v1/chat/completions', async (req, res) => {
     });
   }
 });
-
+// Handle /v1 base endpoint
+app.get('/v1', (req, res) => {
+  res.json({ status: 'ok', message: 'OpenAI NIM Proxy v1' });
+});
 // Catch-all for unsupported endpoints
 app.all('*', (req, res) => {
   res.status(404).json({
